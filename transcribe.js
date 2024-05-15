@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 
 async function getAudio() {
   console.log('[START_TO_GET_AUDIO_WAV]')
-  const filePath = path.resolve(__dirname, '../audio.wav');
+  const filePath = path.resolve(__dirname, './audio.wav');
   const buffer = fs.readFileSync(filePath);
 
   let wav = new wavefile.WaveFile(buffer);
@@ -51,7 +51,7 @@ export async function transcribe() {
   try {
     const transcriber = await pipeline(
       "automatic-speech-recognition",
-      "Xenova/whisper-medium"
+      "Xenova/whisper-small"
     );
 
     const audioData = await getAudio();

@@ -10,14 +10,15 @@ app.use(cors());
 app.get(
   "/audio",
   async (request, response) => {
-    console.log(request)
     const videoId = request.query.videoId;
-    console.log(videoId)
+
     try {
       await downloader(videoId)
       await createMP3()
 
       const data = await transcribe();
+
+      console.log(data)
 
       return response.json(data)  
     } catch (error) {
